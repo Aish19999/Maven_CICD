@@ -2,7 +2,7 @@ name: Java maven build
 
 on:
   push:
-    branches: [feature-deployment]
+    branches: [main]
   pull_request:
     branches: [main]
 
