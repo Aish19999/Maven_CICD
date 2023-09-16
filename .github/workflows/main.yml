@@ -16,7 +16,7 @@ jobs:
           repository: Aish19999/DevOps_templet  # Replace with your repository
           github_token: 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
           branch: main
-          workflow_path: .github/workflows/actions.yml
+          workflow_path: Aish19999/DevOps_templet/.github/workflows/actions.yml
           workflow_inputs: |
             {
               "pipelineType": "java",
