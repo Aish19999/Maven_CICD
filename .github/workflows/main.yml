@@ -11,10 +11,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: Aish19999/DevOps_templet/.github/workflows/actions.yml@main
-        with: 
-           pipelineType: java
-           buildTool: maven
+      - name: Read pipelineConfig.yml
+        run: |
+          # Define the path to the pipelineConfig.yml file
+          pipeline_config_path="${{ github.workspace }}/pipelineconfig.yml"
+
+          # Use a tool like yq to parse the YAML file (install yq if needed)
+          pipeline_type=$(yq eval '.pipelineType' "${pipeline_config_path}")
+          buildTool=$(yq eval '.buildTool' "${pipeline_config_path}")
+      - name: Run
+        uses: Aish19999/DevOps_templet/.github/workflows/actions.yml@main
+     
+
+         
       
     
 
