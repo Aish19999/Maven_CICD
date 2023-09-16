@@ -27,29 +27,30 @@ jobs:
           pipeline_config_path="${{ github.workspace }}/pipelineconfig.yml"
 
           # Use a tool like yq to parse the YAML file (install yq if needed)
-          pipeline_type=$(yq eval '.pipelineType' "${pipeline_config_path}")
+          pipelineTtype=$(yq eval '.pipelineType' "${pipeline_config_path}")
           buildTool=$(yq eval '.buildTool' "${pipeline_config_path}")
-          echo "PipelineType: $pipeline_type"
+          echo "PipelineType: $pipelineType"
           echo "BuildTool: $buildTool"
           echo "::set-output name=pipelineType::$PipelineType"
           echo "::set-output name=buildTool::$BuildTool"  
-
-      - name: Trigger Workflow 2
+          
+      - name: Trigger Second Workflow
         uses: actions/github-script@v5
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const { data: workflow } = await octokit.rest.actions.createWorkflowDispatch({
+            const pipelineType = "${{ steps.parse-config.outputs.pipelineType }}";
+            const buildTool = "${{ steps.parse-config.outputs.buildTool }}";
+            const response = await octokit.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              workflow_id: 'DevOps_templet.github/workflows/actions.yml',  // Replace with the actual workflow name
-              ref: 'main',  // Replace with the branch name if necessary
+              workflow_id: '6207598519', // Replace with the actual Workflow B ID
+              ref: 'main', // Specify the branch or ref
               inputs: {
-                PipelineType: ${{ steps.read_config.outputs.PipelineType }},
-                BuildTool: ${{ steps.read_config.outputs.BuildTool }}
+                buildTool: buildTool,
+                pipelineType: pipelineType
               }
             });
-            console.log(workflow);          
+             
           
 
          
