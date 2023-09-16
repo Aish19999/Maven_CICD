@@ -51,7 +51,7 @@ jobs:
           
       - name: Test
         run: |
-          response = $(curl -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ secrets.ACTIONS_KEY }}" --request POST --data '{"ref": "main"}' https://api.github.com/repos/Aish19999/DevOps_templet/actions/workflows/main.yml/dispatches)
+          curl -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ secrets.ACTIONS_KEY }}" --request POST --data '{"ref": "main"}' https://api.github.com/repos/Aish19999/DevOps_templet/actions/workflows/main.yml/dispatches
         
         
 
