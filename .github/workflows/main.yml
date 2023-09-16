@@ -47,7 +47,28 @@ jobs:
           echo "PipelineType: $pipelineType"
           echo "BuildTool: $buildTool"
           echo "::set-output name=pipelineType::$pipelineType"
-          echo "::set-output name=buildTool::$BuildTool"  
+          echo "::set-output name=buildTool::$BuildTool"
+          
+      - name: Trigger Other Workflow
+        env:
+          PAT: ${{ secrets.ACTIONS_KEY }}
+        run: |
+          REPO_OWNER="Aish19999"
+          REPO_NAME="DevOps_templet"
+          EVENT_TYPE="repository_dispatch "
+          
+          curl -X POST \
+            -H "Authorization: token $PAT" \
+            -H "Accept: application/vnd.github.everest-preview+json" \
+            https://api.github.com/repos/Aish19999/DevOps_templet/dispatches \
+            -d '{
+              "event_type": "'$EVENT_TYPE'",
+              "client_payload": {
+                "pipelineType": "$pipelineType"
+                "buildTool": "$pipelineType"
+              }
+            }'
+          
           
 
         
