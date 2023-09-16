@@ -8,7 +8,7 @@ on:
 
 jobs:
   compile:
-    uses: .github/workflows/actions.yml
+    uses: DevOps_templet.github/workflows/actions.yml
   
 
     
