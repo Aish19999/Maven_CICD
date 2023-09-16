@@ -12,6 +12,9 @@ jobs:
 
     steps:
       - uses: Aish19999/DevOps_templet/.github/workflows/actions.yml@main
+        with: 
+           pipelineType: java
+           buildTool: maven
       
     
 
