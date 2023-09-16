@@ -11,15 +11,6 @@ jobs:
 
     steps:
       - name: Trigger Reusable Workflow
-        uses: actions/checkout@v2
-        with:
-          repository: Aish19999/DevOps_templet  # Replace with your repository
-          github_token: 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
-          branch: main
-          workflow_path: Aish19999/DevOps_templet/.github/workflows/actions.yml
-          workflow_inputs: |
-            {
-              "pipelineType": "java",
-              "buildTool": "maven"
-            }
+        uses: Aish19999/DevOps_templet/.github/workflows/actions.yml@main
+
 
