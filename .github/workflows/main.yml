@@ -53,7 +53,7 @@ jobs:
         run: |
           curl -X POST https://api.github.com/repos/:Aish19999/:DevOps_templet/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
-          -u ${{ secrets.TOKEN }} \
+          -u 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 \
           --data '{"event_type": "Trigger Workflow", "client_payload": { "repository": "'"$DevOps_templet"'" }}'
       - uses: actions/checkout@v3
 
