@@ -32,7 +32,25 @@ jobs:
           echo "PipelineType: $pipeline_type"
           echo "BuildTool: $buildTool"
           echo "::set-output name=pipelineType::$PipelineType"
-          echo "::set-output name=buildTool::$BuildTool"          
+          echo "::set-output name=buildTool::$BuildTool"  
+
+      - name: Trigger Workflow 2
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const { data: workflow } = await octokit.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'DevOps_templet.github/workflows/actions.yml',  // Replace with the actual workflow name
+              ref: 'main',  // Replace with the branch name if necessary
+              inputs: {
+                PipelineType: ${{ steps.read_config.outputs.PipelineType }},
+                BuildTool: ${{ steps.read_config.outputs.BuildTool }}
+              }
+            });
+            console.log(workflow);          
+          
 
          
       
