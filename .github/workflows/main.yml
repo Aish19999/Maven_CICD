@@ -1,6 +1,15 @@
 name: Java maven build
 
 on:
+  workflow_call:
+    inputs:
+      pipelineType:
+        required: true
+        type: string
+      buildTool:
+        required: true
+        type: string
+
   push:
     branches: [main]
   pull_request:
