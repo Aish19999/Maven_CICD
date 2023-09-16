@@ -51,10 +51,7 @@ jobs:
           
       - name: Test
         run: |
-          curl -X POST https://api.github.com/repos/Aish1999/DevOps_templet/.github/workflows/main.yml \
-          -H 'Accept: application/vnd.github.everest-preview+json' \
-          -H "Authorization: token ${{ secrets.ACTIONS_KEY }}" \
-          --data '{"event_type": "Trigger Workflow", "client_payload": { "repository": "Aish19999/DevOps_templet" }}'
+          response = $(curl -H "Accept: application/vnd.github+json" -H "Authorization: token ${{ secrets.ACTIONS_KEY }}" --request POST --data '{"ref": "main"}' https://api.github.com/repos/Aish19999/DevOps_templet/actions/workflows/main.yml/dispatches)
         
         
 
