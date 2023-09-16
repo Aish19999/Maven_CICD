@@ -7,28 +7,22 @@ on:
   workflow_call:
   
 jobs:
-  do-it:
+  read_config:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        
-      - name: List Files in Workspace
-        run: ls -l        
-          
-      - name: Read pipelineConfig.yml
-        run: |
-        
-          # Use a tool like yq to parse the YAML file (install yq if needed)
-          pipeline_type=$(yq eval '.pipelineType' "${pipeline_config_path}")
-          buildTool=$(yq eval '.buildTool' "${pipeline_config_path}")
-          echo "::set-output name=pipelinetype::$pipelinetype"
-          echo "::set-output name=buildtool::$buildtool"
-        shell: bash
 
-      
-     
+      - name: Read pipelineconfig
+        id: read_config
+        run: |
+          PipelineType=$(cat pipelineconfig.yml | yq r - PipelineType)
+          BuildTool=$(cat pipelineconfig.yml | yq r - buildtool)
+          echo "PipelineType: $PipelineType"
+          echo "BuildTool: $BuildTool"
+          echo "::set-output name=PipelineType::$PipelineType"
+          echo "::set-output name=BuildTool::$BuildTool"
 
          
       
