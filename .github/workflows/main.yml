@@ -12,7 +12,11 @@ jobs:
     steps:
       - name: Trigger Reusable Workflow
         uses: actions/checkout@v2
-
+        
+      - name: Set Git Configuration
+        run: |
+          git config --global --add safe.directory /github/workspace
+          
       - name: Trigger Reusable Workflow
         uses: ad-m/github-push-action@v0.5.0
         with:
