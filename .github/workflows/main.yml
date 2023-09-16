@@ -9,8 +9,6 @@ on:
 jobs:
   my_job:
     name: deploy
-    runs-on: ubuntu-18.04
-  compile:
     uses: Aish19999/DevOps_templet/.github/workflows/actions.yml@main
   
 
