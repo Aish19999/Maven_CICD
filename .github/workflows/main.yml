@@ -42,9 +42,9 @@ jobs:
           pipeline_config_path="${{ github.workspace }}/pipelineconfig.yml"
 
           # Use a tool like yq to parse the YAML file (install yq if needed)
-          pipelineTtype=$(yq eval '.pipelineType' "${pipeline_config_path}")
+          pipelineType=$(yq eval '.pipelineType' "${pipeline_config_path}")
           buildTool=$(yq eval '.buildTool' "${pipeline_config_path}")
-          echo "PipelineType: $pipelineType"
+          echo "PipelineType: $pipelineTpe"
           echo "BuildTool: $buildTool"
           echo "::set-output name=pipelineType::$pipelineType"
           echo "::set-output name=buildTool::$BuildTool"  
