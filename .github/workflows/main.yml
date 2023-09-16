@@ -19,8 +19,11 @@ jobs:
           # Use a tool like yq to parse the YAML file (install yq if needed)
           pipeline_type=$(yq eval '.pipelineType' "${pipeline_config_path}")
           buildTool=$(yq eval '.buildTool' "${pipeline_config_path}")
-      - name: Run
-        uses: Aish19999/DevOps_templet/.github/workflows/actions.yml@main
+          echo "::set-output name=pipelinetype::$pipelinetype"
+          echo "::set-output name=buildtool::$buildtool"
+        shell: bash
+
+      
      
 
          
