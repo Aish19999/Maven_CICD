@@ -7,8 +7,6 @@ on:
       - feature-test
   
 jobs:
-  read_config:
-    runs-on: ubuntu-latest
   call-workflow-passing-data:
     uses: Aish1999/DevOps_templet/.github/workflows/actions.yml@main 
 
