@@ -49,8 +49,7 @@ jobs:
           echo "::set-output name=pipelineType::$pipelineType"
           echo "::set-output name=buildTool::$BuildTool"  
           
-      - name: call
-        uses: Aish19999/DevOps_templet/.github/workflows/main.yml@main
+
         
 
            
