@@ -1,15 +1,6 @@
 name: Main Workflow
 
 on:
-  workflow_dispatch:
-    inputs:
-      buildtool:
-        description: 'Build Tool'
-        required: true
-      pipelineconfig:
-        description: 'Pipeline Config'
-        required: true
-        
   push:
     branches:
       - main
@@ -40,7 +31,7 @@ jobs:
           buildTool=$(yq eval '.buildTool' "${pipeline_config_path}")
           echo "PipelineType: $pipelineType"
           echo "BuildTool: $buildTool"
-          echo "::set-output name=pipelineType::$PipelineType"
+          echo "::set-output name=pipelineType::$pipelineType"
           echo "::set-output name=buildTool::$BuildTool"  
           
       - name: Trigger Second Workflow
