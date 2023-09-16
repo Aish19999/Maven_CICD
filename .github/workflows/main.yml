@@ -18,7 +18,6 @@ jobs:
           git config --global --add safe.directory /github/workspace
           
       - name: Trigger Reusable Workflow
-        uses: Aish19999/DevOps_templet/.github/workflows/actions.yml@main
         with:
           repository: Aish19999/DevOps_templet/ 
           github_token: ${{ secrets.GITHUB_TOKEN }}
