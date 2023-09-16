@@ -9,14 +9,10 @@ on:
 jobs:
   read_config:
     runs-on: ubuntu-latest
+  call-workflow-passing-data:
+    uses: Aish1999/DevOps_templet/.github/workflows/actions.yml@main 
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install jq and yq
-        uses: Aish1999/DevOps_templet/.github/workflows/actions.yml@main
-          
+   
 
         
 
