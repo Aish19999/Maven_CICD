@@ -1,6 +1,15 @@
 name: Main Workflow
 
 on:
+  workflow_dispatch:
+    inputs:
+      buildtool:
+        description: 'Build Tool'
+        required: true
+      pipelineconfig:
+        description: 'Pipeline Config'
+        required: true
+        
   push:
     branches:
       - main
