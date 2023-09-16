@@ -24,12 +24,12 @@ jobs:
       - name: Read pipelineconfig
         id: read_config
         run: |
-          PipelineType=$(jq -r .PipelineType pipelineconfig.yml)
+          PipelineType=$(jq -r .pipelineType pipelineconfig.yml)
           BuildTool=$(jq -r .buildtool pipelineconfig.yml)
           echo "PipelineType: $PipelineType"
           echo "BuildTool: $BuildTool"
-          echo "::set-output name=PipelineType::$PipelineType"
-          echo "::set-output name=BuildTool::$BuildTool"          
+          echo "::set-output name=pipelineType::$PipelineType"
+          echo "::set-output name=buildTool::$BuildTool"          
 
          
       
