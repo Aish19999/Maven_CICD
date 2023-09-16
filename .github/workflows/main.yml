@@ -37,19 +37,24 @@ jobs:
       - name: Trigger Second Workflow
         uses: actions/github-script@v5
         with:
-          script: |
-            const pipelineType = "${{ steps.parse-config.outputs.pipelineType }}";
-            const buildTool = "${{ steps.parse-config.outputs.buildTool }}";
-            const response = await octokit.actions.createWorkflowDispatch({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              workflow_id: '6207598519', // Replace with the actual Workflow B ID
-              ref: 'main', // Specify the branch or ref
-              inputs: {
-                buildTool: buildTool,
-                pipelineType: pipelineType
-              }
-            });
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+           const pipelinetype = "${{ steps.parse-config.outputs.pipelinetype }}";
+           const buildtool = "${{ steps.parse-config.outputs.buildtool }}";
+
+           const response = await github.actions.createWorkflowDispatch({
+        owner: context.repo.owner,
+        repo: context.repo.repo,
+        workflow_id: '12345678', // Replace with the actual Workflow B ID
+        ref: 'main', // Specify the branch or ref
+        inputs: {
+          buildtool: buildtool,
+          pipelineconfig: "${{ secrets.PIPELINE_CONFIG }}"
+        }
+      });
+
+      console.log(`Triggered Second Workflow: ${response.status}`);
+
              
           
 
