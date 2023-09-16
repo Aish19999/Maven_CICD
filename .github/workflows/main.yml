@@ -14,15 +14,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Install jq and yq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+          sudo curl -sL https://github.com/mikefarah/yq/releases/download/v4.13.2/yq_linux_amd64 -o /usr/bin/yq
+          sudo chmod +x /usr/bin/yq
+
       - name: Read pipelineconfig
         id: read_config
         run: |
-          PipelineType=$(cat pipelineconfig.yml | yq r - PipelineType)
-          BuildTool=$(cat pipelineconfig.yml | yq r - buildtool)
+          PipelineType=$(jq -r .PipelineType pipelineconfig.yml)
+          BuildTool=$(jq -r .buildtool pipelineconfig.yml)
           echo "PipelineType: $PipelineType"
           echo "BuildTool: $BuildTool"
           echo "::set-output name=PipelineType::$PipelineType"
-          echo "::set-output name=BuildTool::$BuildTool"
+          echo "::set-output name=BuildTool::$BuildTool"          
 
          
       
