@@ -12,27 +12,17 @@ jobs:
     steps:
       - name: Trigger Reusable Workflow
         uses: actions/checkout@v2
-        
-      - name: Set Git Configuration
-        run: |
-          git config --global --add safe.directory /github/workspace
-          
+
       - name: Trigger Reusable Workflow
+        uses: ad-m/github-push-action@v0.5.0
         with:
-          repository: Aish19999/DevOps_templet/ 
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          repository: Aish19999/DevOps_templet  # Replace with your repository
+          github_token: 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
           branch: main
-          workflow_path: Aish19999/DevOps_templet/.github/workflows/actions.yml@main
+          workflow_path: .github/workflows/actions.yml
           workflow_inputs: |
             {
-              "pipelineType": "java",
-              "buildTool": "maven"
+              "pipelineType": "Java",
+              "buildTool": "Maven"
             }
 
-
-
-    
-
-  
-
-    
