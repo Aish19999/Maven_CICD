@@ -14,6 +14,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         
+      - name: List Files in Workspace
+        run: ls -l        
+          
       - name: Read pipelineConfig.yml
         run: |
           # Define the path to the pipelineConfig.yml file
