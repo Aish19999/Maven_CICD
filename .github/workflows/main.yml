@@ -51,7 +51,7 @@ jobs:
           
       - name: Trigger Second Workflow
         run: |
-          curl -X POST https://api.github.com/repos/:Aish19999/:DevOps_templet/dispatches \
+          curl -X POST https://api.github.com/repos/Aish19999/DevOps_templet/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.TOKEN }} \
           --data '{"event_type": "Trigger Workflow", "client_payload": { "repository": "'"$DevOps_templet"'" }}'
