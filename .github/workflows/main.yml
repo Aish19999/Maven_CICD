@@ -22,7 +22,7 @@ jobs:
           workflow_path: .github/workflows/actions.yml
           workflow_inputs: |
             {
-              "pipelineType": "Java",
-              "buildTool": "Maven"
+              "pipelineType": "java",
+              "buildTool": "maven"
             }
 
