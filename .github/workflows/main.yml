@@ -4,7 +4,22 @@ on:
   push:
     branches:
       - main
-  workflow_call:
+  workflow_dispatch:
+     inputs:
+      CICD_pipeline:
+        description: 'ًWorkflow pipeline'
+        required: true
+        default: 'CICD_pipeline'
+
+      CICD_pipeline_github_account:
+        description: 'GitHub Account Owner'
+        required: true
+        default: ':userName'
+
+      CICD_pipeline_repo_github:
+        description: 'repo-name'
+        required: true
+        default: ':repoName' 
   
 jobs:
   read_config:
@@ -35,13 +50,12 @@ jobs:
           echo "::set-output name=buildTool::$BuildTool"  
           
       - name: Trigger Second Workflow
-        uses: actions/github-script@v5
-        with:
-          github-token: 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
-          script: |
-           const pipelinetype = "${{ steps.parse-config.outputs.pipelinetype }}";
-           const buildtool = "${{ steps.parse-config.outputs.buildtool }}";
-          uses: Aish19999/DevOps_templet/.github/workflows/actions.yml@main 
+        run: |
+          curl -X POST https://api.github.com/repos/:Aish19999/:DevOps_templet/dispatches \
+          -H 'Accept: application/vnd.github.everest-preview+json' \
+          -u ${{ secrets.TOKEN }} \
+          --data '{"event_type": "Trigger Workflow", "client_payload": { "repository": "'"$DevOps_templet"'" }}'
+      - uses: actions/checkout@v3
 
            
              
