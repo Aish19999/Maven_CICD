@@ -11,6 +11,15 @@ jobs:
 
     steps:
       - name: Trigger Reusable Workflow
-        uses: Aish19999/DevOps_templet/.github/workflows/actions.yml@main
+        with:
+          repository: Aish19999/DevOps_templet  # Replace with your repository
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          workflow_path: .github/workflows/actions.yml
+          workflow_inputs: |
+            {
+              "pipelineType": "java",
+              "buildTool": "maven"
+            }
 
 
