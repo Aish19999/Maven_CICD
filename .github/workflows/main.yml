@@ -44,7 +44,7 @@ jobs:
           # Use a tool like yq to parse the YAML file (install yq if needed)
           pipelineType=$(yq eval '.pipelineType' "${pipeline_config_path}")
           buildTool=$(yq eval '.buildTool' "${pipeline_config_path}")
-          echo "PipelineType: $pipelineTpe"
+          echo "PipelineType: $pipelineType"
           echo "BuildTool: $buildTool"
           echo "::set-output name=pipelineType::$pipelineType"
           echo "::set-output name=buildTool::$BuildTool"  
