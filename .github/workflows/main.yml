@@ -24,10 +24,13 @@ jobs:
       - name: Read pipelineconfig
         id: read_config
         run: |
-          PipelineType=$(jq -r .pipelineType pipelineconfig.yml)
-          BuildTool=$(jq -r .buildtool pipelineconfig.yml)
-          echo "PipelineType: $PipelineType"
-          echo "BuildTool: $BuildTool"
+          pipeline_config_path="${{ github.workspace }}/pipelineconfig.yml"
+
+          # Use a tool like yq to parse the YAML file (install yq if needed)
+          pipeline_type=$(yq eval '.pipelineType' "${pipeline_config_path}")
+          buildTool=$(yq eval '.buildTool' "${pipeline_config_path}")
+          echo "PipelineType: $pipeline_type"
+          echo "BuildTool: $buildTool"
           echo "::set-output name=pipelineType::$PipelineType"
           echo "::set-output name=buildTool::$BuildTool"          
 
