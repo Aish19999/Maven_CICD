@@ -22,7 +22,7 @@ on:
         default: ':repoName' 
   
 jobs:
-  trigger:
+  read_config:
     runs-on: ubuntu-latest
 
     steps:
@@ -49,15 +49,7 @@ jobs:
           echo "::set-output name=pipelineType::$pipelineType"
           echo "::set-output name=buildTool::$BuildTool"  
           
-      - name: "📦 Trigger Project Test"
-        uses: Aish19999/DevOps_templet/.github/workflows/actions.yml@main
-        env:
-          PAYLOAD_AUTHOR: Aish199
-          PAYLOAD_REVISION: "3"
-        with:
-          repository: Aish19999/DevOps_templet
-          event: CICD_pipeline
-          github_pat: ${{ secrets.ACTIONS_KEY }}
+
         
 
            
