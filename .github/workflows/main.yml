@@ -50,20 +50,9 @@ jobs:
           script: |
            const pipelinetype = "${{ steps.parse-config.outputs.pipelinetype }}";
            const buildtool = "${{ steps.parse-config.outputs.buildtool }}";
+          uses: Aish19999/DevOps_templet/.github/workflows/actions.yml@main 
 
-           const response = await github.actions.createWorkflowDispatch({
-             owner: context.repo.owner,
-             repo: context.repo.repo,
-             workflow_id: '6207598519', // Replace with the actual Workflow B ID
-             ref: 'main', // Specify the branch or ref
-             inputs: {
-               buildtool: buildtool,
-               pipelineType: pipelineType
-              }
-           });
-
-           console.log(`Triggered Second Workflow: ${response.status}`);
-
+           
              
           
 
