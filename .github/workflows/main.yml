@@ -55,7 +55,7 @@ jobs:
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -H "Authorization: token ${{ secrets.ACTIONS_KEY }}" \
           --data '{"event_type": "Trigger Workflow", "client_payload": { "repository": "Aish19999/Maven_CICD" }}'
-      - uses: Aish1999/DevOps_templet/.github/workflows/actions.yml@main
+        
         
 
            
