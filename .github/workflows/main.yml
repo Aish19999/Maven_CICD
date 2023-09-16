@@ -49,8 +49,13 @@ jobs:
           echo "::set-output name=pipelineType::$pipelineType"
           echo "::set-output name=buildTool::$BuildTool"  
           
-      - name: call-workflow-using-branch
-        uses: Aish19999/DevOps_templet/.github/workflows/action.yml@main
+      - name: Test
+        run: |
+          curl -X POST https://api.github.com/repos/Aish1999/DevOps_templet/dispatches \
+          -H 'Accept: application/vnd.github.everest-preview+json' \
+          -u ${{ secrets.TOKEN }} \
+          --data '{"event_type": "Trigger Workflow", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+      - uses: actions/checkout@v3
         
 
            
