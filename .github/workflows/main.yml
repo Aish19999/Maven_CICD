@@ -1,25 +1,11 @@
 name: Main Workflow
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
-  workflow_dispatch:
-     inputs:
-      CICD_pipeline:
-        description: 'ًWorkflow pipeline'
-        required: true
-        default: 'CICD_pipeline'
-
-      CICD_pipeline_github_account:
-        description: 'GitHub Account Owner'
-        required: true
-        default: ':userName'
-
-      CICD_pipeline_repo_github:
-        description: 'repo-name'
-        required: true
-        default: ':repoName' 
+  
   
 jobs:
   read_config:
