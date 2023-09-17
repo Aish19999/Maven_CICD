@@ -35,8 +35,12 @@ jobs:
           echo "::set-output name=pipelineType::$pipelineType"
           echo "::set-output name=buildTool::$BuildTool"
           
-      - name: Trigger Other Workflow
-        uses: Aish19999/DevOps_templet/.github/workflows/mavenBuild.yml@main
+      - name: Call Another Workflow
+        run: |
+          # Execute another workflow using its workflow name
+          curl -X POST https://api.github.com/repos/Aish19999/DevOps_templet/actions/workflows/main.yml/dispatches \
+            -H "Authorization: token ${{ secrets.ACTIONS_KEY }}" \
+            -d '{"ref":"main"}'
           
           
 
