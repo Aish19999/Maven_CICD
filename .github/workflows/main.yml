@@ -38,8 +38,9 @@ jobs:
       - name: Call Another Workflow
         run: |
           # Execute another workflow using its workflow name
-          curl -X POST https://api.github.com/repos/Aish19999/DevOps_templet/actions/workflows/6214084532/dispatches  \
-            -H "Authorization: token ${{ secrets.ACTIONS_KEY }}" \
+          curl -X POST https://api.github.com/repos/Aish19999/DevOps_template/actions/workflows/6214084532/dispatches  \
+            -H "Authorization: Bearer ${{ secrets.ACTIONS_KEY }}" \
+            -H "Accept: application/vnd.github.v3+json" \
             -d '{"ref":"main"}'
           
           
