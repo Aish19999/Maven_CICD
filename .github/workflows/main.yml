@@ -39,8 +39,8 @@ jobs:
   Trigger_Second_Workflow:
     uses: Aish19999/DevOps_templet/.github/workflows/actions.yml@main
     with:
-      pipelineType : java
-      buildTool: maven
+      pipelineType : $pipelineType
+      buildTool: $buildTool
       
           
 
