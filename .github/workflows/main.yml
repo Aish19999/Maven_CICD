@@ -35,19 +35,16 @@ jobs:
           echo "::set-output name=pipelineType::$pipelineType"
           echo "::set-output name=buildTool::$BuildTool"
 
-      - name: Call CICD_pipeline Workflow
-        run: |
-          curl -X POST \
-             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-             -H "Accept: application/vnd.github.everest-preview+json" \
-             -H "Content-Type: application/json" \
-             -d '{
-                "event_type": "workflow_call",
-                "client_payload": {
-                "pipelineType": "java",  // Specify the desired pipelineType
-                "buildTool": "maven"     // Specify the desired buildTool
-              }
-          }' \
+  Calling_CICD_pipeline:
+      uses: Aish19999/DevOps_template/.github/workflows/actions.yml@main
+      with: 
+        pipelineType : ${{pipelineType}}
+        buildTool: ${{buildTool}}
+        
+      
+         
+
+
           https://api.github.com/repos/Aish19999/DevOps_template/actions/workflows/6214084532/dispatches   
           
 
