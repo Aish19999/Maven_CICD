@@ -32,8 +32,8 @@ jobs:
           buildTool=$(yq eval '.buildTool' "${pipeline_config_path}")
           echo "PipelineType: $pipelineType"
           echo "BuildTool: $buildTool"
-          echo "::save-state name=pipelineType::$pipelineType"
-          echo "::save-state name=buildTool::$buildTool"
+          echo "pipelineType=$pipelineType" >> $GITHUB_OUTPUT
+          echo "buildTool=$buildTool" >> $GITHUB_OUTPUT
  #         echo "::set-output name=pipelineType::$pipelineType"
  #         echo "::set-output name=buildTool::$BuildTool"
           
