@@ -42,10 +42,11 @@ jobs:
  #         echo "::set-output name=pipelineType::$pipelineType"
  #         echo "::set-output name=buildTool::$BuildTool"
   Trigger_Second_Workflow:
+    needs: read_config
     uses: Aish19999/DevOps_templet/.github/workflows/actions.yml@main
     with:
-      pipelineType : $pipelineType
-      buildTool: $buildTool
+      pipelineType : ${{needs.read_config.outputs.pipelineType}}
+      buildTool: ${{needs.read_config.outputs.buildTool}}
       
           
 
