@@ -35,13 +35,6 @@ jobs:
           echo "::set-output name=pipelineType::$pipelineType"
           echo "::set-output name=buildTool::$BuildTool"
 
-  Calling_CICD_pipeline:
-      uses: Aish19999/DevOps_template/.github/workflows/actions.yml@main
-      with:
-        workflow: Second Workflow
-        inputs:
-          pipelineType: ${{ steps.read_config.outputs.pipelineType  }}
-          buildTool: ${{ steps.read_config.outputs.buildTool }}
 
       
          
