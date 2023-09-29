@@ -1,0 +1,19 @@
+name: Workflow2
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      
+permissions: write-all      
+   
+jobs:
+   read_config:
+     runs-on: ubuntu-latest
+     steps:
+       - name: Checkout code
+         uses: actions/checkout@v2
+
+   pipeline:
+    uses: Aish19999/DevOps_templet/.github/workflows/actions2.yml@main
