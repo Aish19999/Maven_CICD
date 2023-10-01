@@ -16,6 +16,7 @@ jobs:
          uses: actions/checkout@v2
 
    pipeline:
-    uses: Aish19999/DevOps_templet/.github/workflows/actions.yml@main
+     uses: Aish19999/Test_repo/.github/workflows/main.yml@main
+#    uses: Aish19999/DevOps_templet/.github/workflows/actions.yml@main     
    
     
