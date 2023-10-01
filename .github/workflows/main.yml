@@ -15,16 +15,6 @@ jobs:
        - name: Checkout code
          uses: actions/checkout@v2
 
-       - name: Dynamically Call Workflow
-         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          WORKFLOW_PAT: ${{ secrets.WORKFLOW_PAT }}
-          ACTIONS_STEP_DEBUG: true
-
-         run: |
-          PAT="${{ env.WORKFLOW_PAT }}" 
-          echo "My PAT Token: $PAT"  
-
    pipeline:
     uses: Aish19999/DevOps_templet/.github/workflows/actions.yml@main     
    
