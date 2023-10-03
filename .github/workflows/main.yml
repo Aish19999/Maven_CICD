@@ -1,21 +1,20 @@
-name: Main Workflow
-
 on:
   workflow_dispatch:
   push:
-    branches:
-      - main
-      
-permissions: write-all      
-   
-jobs:
-   read_config:
-     runs-on: ubuntu-latest
-     steps:
-       - name: Checkout code
-         uses: actions/checkout@v2
+    branches: ['test']
 
-   pipeline:
-    uses: Aish19999/DevOps_templet/.github/workflows/actions.yml@main    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Do anything elsee
+        run: echo Pretend to do other things 
+
+      # Uses the Composite Action
+      - name: Build and Push the image
+        uses: Aish19999/Actions-Template@main
    
     
